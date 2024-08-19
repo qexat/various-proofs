@@ -1,17 +1,26 @@
-Require Import Nat.
 Require Import Arith.
-
-Lemma carre_n_est_n_fois_n : forall (n : nat), n ^ 2 = n * n.
-Proof.
-  intro n.
-  simpl.
-  ring.
-Qed.
+Require Import Nat.
+Require Import Lia.
 
 Lemma identite_remarquable_1 : forall (n m : nat), (n + m) ^ 2 = (n ^ 2) + (2 * n * m) + (m ^ 2).
 Proof.
   intros n m.
   replace ((n + m) ^ 2) with ((n + m) * (n + m)).
   - simpl. ring.
-  - remember (n + m) as a. rewrite carre_n_est_n_fois_n. reflexivity.
+  - rewrite Nat.pow_2_r with (a := n + m). reflexivity.
+Qed.
+
+Lemma identite_remarquable_3 : forall (n m : nat), n ^ 2 - m ^ 2 = (n - m) * (n + m).
+Proof.
+  intros n m.
+
+  rewrite Nat.pow_2_r with (a := n).
+  rewrite Nat.pow_2_r with (a := m).
+  rewrite Nat.mul_sub_distr_r with (p := (n + m)).
+  rewrite Nat.mul_add_distr_l with (m := n) (p := m).
+  rewrite Nat.mul_add_distr_l with (n := m) (m := n) (p := m).
+  rewrite Nat.sub_add_distr with (n := n * n + n * m) (m := m * n) (p := m * m).
+  rewrite Nat.mul_comm with (n := m) (m := n).
+
+  lia.
 Qed.
