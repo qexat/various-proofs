@@ -2,7 +2,7 @@ Require Import Arith.
 Require Import Nat.
 Require Import Lia.
 
-Lemma identite_remarquable_1 : forall (n m : nat), (n + m) ^ 2 = (n ^ 2) + (2 * n * m) + (m ^ 2).
+Lemma remarkable_identity_1 : forall (n m : nat), (n + m) ^ 2 = (n ^ 2) + (2 * n * m) + (m ^ 2).
 Proof.
   intros n m.
   replace ((n + m) ^ 2) with ((n + m) * (n + m)).
@@ -10,7 +10,7 @@ Proof.
   - rewrite Nat.pow_2_r with (a := n + m). reflexivity.
 Qed.
 
-Lemma identite_remarquable_3 : forall (n m : nat), n ^ 2 - m ^ 2 = (n - m) * (n + m).
+Lemma remarkable_identity_3 : forall (n m : nat), n ^ 2 - m ^ 2 = (n - m) * (n + m).
 Proof.
   intros n m.
 
