@@ -1,6 +1,5 @@
 Require Import Arith.
 Require Import ZArith.
-Require Import Coq.Classes.RelationClasses.
 
 Open Scope Z_scope.
 
